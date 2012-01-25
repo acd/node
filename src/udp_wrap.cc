@@ -409,7 +409,7 @@ void UDPWrap::OnSend(uv_udp_send_t* req, int status) {
     Integer::New(status),
     Local<Value>::New(wrap->object_),
     Local<Value>::New(req_wrap->object_),
-    req_wrap->object_->GetHiddenValue(buffer_sym),
+    Integer::New(req->status),
   };
 
   MakeCallback(req_wrap->object_, "oncomplete", 4, argv);
